@@ -13,7 +13,6 @@ def main():
         x="species",
         y="body_mass_g",
         title="Distribució del pes corporal segons l'espècie de pingüí",
-        points="all"  # Mostro també els punts de dades individuals
     )
 
     # Guardo el gràfic com a fitxer HTML
