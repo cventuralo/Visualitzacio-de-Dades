@@ -25,7 +25,7 @@ def getStockData(stock, start=None, end=None, interval=None):
 if __name__ == "__main__":
     stock_symbol = "AAPL"  # Acció a mostrar
     start_date = "2025-01-01"
-    end_date = "2025-10-01"
+    end_date = "2026-10-01"
 
     # Obtenim dades
     df_stock = getStockData(stock_symbol, start=start_date, end=end_date)
