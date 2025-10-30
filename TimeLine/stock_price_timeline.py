@@ -3,8 +3,7 @@ import yfinance as yf
 import plotly.express as px
 import os
 
-# -------------------------------------------------
-# Aquí baixo les dades de l'acció que m'interessa
+# Baixo les dades de l'acció que m'interessa
 def getStockData(stock, start=None, end=None, interval=None):
     try:
         stockYF = yf.Ticker(stock)
@@ -17,7 +16,6 @@ def getStockData(stock, start=None, end=None, interval=None):
         else:
             df[stock] = stockYF.history(start=start, end=end).Close
         
-        # Treballo amb l'índex sense zona horària
         df.index = df.index.tz_localize(None)
     except Exception as e:
         print(f"No puc obtenir les dades per {stock}: {e}")
@@ -26,8 +24,7 @@ def getStockData(stock, start=None, end=None, interval=None):
     return df
 
 
-# -------------------------------------------------
-# Aquí executo el meu script principal
+# Script principal
 if __name__ == "__main__":
     stock_symbol = "AAPL"   # Aquí trio l'acció que vull visualitzar
     start_date = "2025-01-01"
@@ -47,12 +44,11 @@ if __name__ == "__main__":
         )
         fig.update_traces(text=df_stock[stock_symbol], textposition="top center")
 
-        # Guardo el fitxer HTML al mateix lloc on executo aquest script
-        output_file = os.path.join(os.getcwd(), "stock_plot.html")
+        # Guardo el fitxer HTML
+        output_file = os.path.join(os.getcwd(), "timeline_plot.html")
         fig.write_html(output_file)
 
         print(f"He guardat el gràfic correctament com a: {output_file}")
-        print("Ara puc pujar aquest fitxer a GitHub i veure'l amb GitHub Pages.")
     else:
         print("No hi ha dades per mostrar.")
 
