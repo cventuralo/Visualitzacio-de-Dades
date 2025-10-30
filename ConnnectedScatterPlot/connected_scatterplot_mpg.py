@@ -4,13 +4,16 @@ import plotly.express as px
 import os
 
 def main():
-    # Carrego el dataset "mpg" de Seaborn
-    df = sns.load_dataset("mpg").dropna(subset=["mpg", "model_year", "manufacturer"])
+    # Carrego el dataset "mpg"
+    df = sns.load_dataset("mpg").dropna(subset=["mpg", "model_year", "name"])
 
-    # Com puc tenir més claredat, agrupo per any i marca
+    # Creem columna 'manufacturer' a partir del nom del cotxe
+    df['manufacturer'] = df['name'].apply(lambda x: x.split()[0])
+
+    # Agrupo per any i marca
     df_grouped = df.groupby(["model_year", "manufacturer"])["mpg"].mean().reset_index()
 
-    # Creo el Connected Scatterplot
+    # Connected Scatterplot
     fig = px.scatter(
         df_grouped,
         x="model_year",
@@ -25,10 +28,9 @@ def main():
         }
     )
 
-    # Connecto els punts amb línia
     fig.update_traces(mode="lines+markers+text", textposition="top center")
 
-    # Guardo el gràfic com a fitxer HTML
+    # Guardo com HTML
     output_file = os.path.join(os.getcwd(), "connected_scatterplot_mpg.html")
     fig.write_html(output_file)
 
