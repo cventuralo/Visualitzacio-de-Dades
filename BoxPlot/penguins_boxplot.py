@@ -13,6 +13,10 @@ def main():
         x="species",
         y="body_mass_g",
         title="Distribució del pes corporal segons l'espècie de pingüí",
+        labels={
+            "species": "Espècies",
+            "body_mass_g": "Pes corporal (gr)"
+        }
     )
 
     # Guardo el gràfic com a fitxer HTML
@@ -20,6 +24,7 @@ def main():
     fig.write_html(output_file)
 
     print(f"He creat el gràfic i l'he guardat com a: {output_file}")
+
 
 if __name__ == "__main__":
     main()
