@@ -12,6 +12,7 @@ def main():
         df,
         x="species",
         y="body_mass_g",
+        color="species",
         title="Distribució del pes corporal segons l'espècie de pingüí",
         labels={
             "species": "Espècies",
