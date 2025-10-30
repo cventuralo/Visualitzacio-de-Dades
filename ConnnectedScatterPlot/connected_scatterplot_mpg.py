@@ -41,7 +41,7 @@ def main():
     fig.update_traces(mode="lines+markers+text", textposition="top center")
 
     # Guardo el gràfic com a fitxer HTML
-    fitxer_sortida = os.path.join(os.getcwd(), "connected_scatterplot_marques.html")
+    fitxer_sortida = os.path.join(os.getcwd(), "connected_scatterplot_mpg.html")
     fig.write_html(fitxer_sortida)
 
     print(f"He creat el Connected Scatterplot i l'he guardat com a: {fitxer_sortida}")
