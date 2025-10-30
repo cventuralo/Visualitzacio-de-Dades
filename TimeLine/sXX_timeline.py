@@ -26,6 +26,7 @@ def filtrar_esdeveniments(df):
     # Només un esdeveniment per any
     df_sXX = df_sXX.groupby(df_sXX['Year'].dt.year).first().reset_index(drop=True)
     
+    # Ordeno per Year 
     df_sXX = df_sXX.sort_values('Year').reset_index(drop=True)
     return df_sXX
 
@@ -33,8 +34,7 @@ def crear_timeline_html(df, output_file="timeline_military_conflicts.html"):
     fig = go.Figure()
 
     y_base = 0
-    max_y = 2  # altura màxima aleatòria de les línies
-
+    max_y = 2
     # Línia base del timeline
     fig.add_trace(go.Scatter(
         x=[pd.to_datetime(1930, format='%Y'), pd.to_datetime(1950, format='%Y')],
@@ -45,7 +45,7 @@ def crear_timeline_html(df, output_file="timeline_military_conflicts.html"):
 
     anys = list(range(1930, 1951))
 
-    # Afegir cada esdeveniment amb línia vertical aleatòria
+    # Afegir cada esdeveniment amb línia vertical
     for i, row in df.iterrows():
         y_random = random.uniform(0.8, max_y)
         fig.add_trace(go.Scatter(
