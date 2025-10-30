@@ -1,7 +1,9 @@
 import pandas as pd
 import yfinance as yf
 import plotly.express as px
+import os
 
+# -----------------------------
 # Funció per descarregar dades
 def getStockData(stock, start=None, end=None, interval=None):
     try:
@@ -33,6 +35,16 @@ if __name__ == "__main__":
         fig = px.line(df_stock, x=df_stock.index, y=stock_symbol,
                       title=f"{stock_symbol} Stock Timeline", markers=True)
         fig.update_traces(text=df_stock[stock_symbol], textposition="top center")
-        fig.show()
+        
+        # Crear carpeta de sortida si no existeix
+        output_dir = "PAC 2/TimeLine"
+        os.makedirs(output_dir, exist_ok=True)
+        
+        # Guardem el gràfic com a fitxer HTML
+        output_file = os.path.join(output_dir, "stock_plot.html")
+        fig.write_html(output_file)
+        
+        print(f"Gràfic guardat correctament com a {output_file}")
+        print("Puja aquest fitxer a GitHub i podràs veure'l amb GitHub Pages.")
     else:
         print("No hi ha dades per mostrar.")
