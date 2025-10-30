@@ -25,7 +25,13 @@ def main():
 
     # Mostro els valors sobre les barres
     fig.update_traces(textposition="outside")
-
+    
+    fig.update_xaxes(
+        dtick=1,  # mostra cada any
+        tickmode="linear",  # no omet cap etiqueta
+        tickangle=0  # manté les etiquetes horitzontals
+    )
+    
     # Guardo com HTML
     fitxer_sortida = os.path.join(os.getcwd(), "timeline_bar_passatgers.html")
     fig.write_html(fitxer_sortida)
