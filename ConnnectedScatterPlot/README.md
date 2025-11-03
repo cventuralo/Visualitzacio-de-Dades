@@ -1,9 +1,12 @@
-# Connected Scatterplot — Eficiència de combustibles
+# ECB Unemployment Connected Scatterplot (2000+)
 
-Aquest projecte genera un **Connected Scatterplot interactiu** utilitzant el dataset `mpg` de Seaborn.  
-Mostra com evoluciona el consum mitjà de combustible (`mpg`) per marca de cotxe (`manufacturer`) al llarg dels anys (`model_year`).
+Aquest projecte recupera les dades d'atur des de l'European Central Bank (ECB)
+per a Alemanya, França, Itàlia i Espanya i genera una **gràfica interactiva**
+mostrant l'evolució anual des de l'any 2000.
 
 ---
-## Instal·lació
+
+## Requisits
+
 ```bash
 pip install -r requirements.txt
