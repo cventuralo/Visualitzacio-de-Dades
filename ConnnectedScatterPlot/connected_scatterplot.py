@@ -62,7 +62,7 @@ def main():
         xaxis=dict(tickformat="%Y"),
         template="plotly_white",
         height=600,
-        width=1000
+        width=1200
     )
 
     # Guardar com HTML
