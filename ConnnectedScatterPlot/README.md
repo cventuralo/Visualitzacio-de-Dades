@@ -1,4 +1,4 @@
-# ECB Unemployment Connected Scatterplot (2000+)
+# ECB Unemployment Connected Scatterplot
 
 Aquest projecte recupera les dades d'atur des de l'European Central Bank (ECB)
 per a Alemanya, França, Itàlia i Espanya i genera una **gràfica interactiva**
