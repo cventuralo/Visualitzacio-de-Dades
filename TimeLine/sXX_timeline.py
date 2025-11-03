@@ -75,7 +75,6 @@ def crear_timeline_html(df, output_file="timeline_military_conflicts.html"):
     )
 
     fig.write_html(output_file)
-    print(f"✅ Fitxer HTML creat: {os.path.abspath(output_file)}")
 
 def main():
     file_path = 'World_Important_Dates.csv'
