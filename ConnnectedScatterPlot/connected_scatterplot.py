@@ -3,7 +3,7 @@ import xml.etree.ElementTree as ET
 import pandas as pd
 import plotly.graph_objects as go
 
-# URLs de les sèries SDW de l'ECB per cada país
+# URLs de les sèries de l'ECB per cada país
 series_urls = {
     "Germany": "https://data-api.ecb.europa.eu/service/data/LFSI/M.DE.S.UNEHRT.TOTAL0.15_74.T",
     "France":  "https://data-api.ecb.europa.eu/service/data/LFSI/M.FR.S.UNEHRT.TOTAL0.15_74.T",
@@ -19,7 +19,7 @@ def fetch_monthly_data(url):
 
     data = []
     for obs in root.findall('.//generic:Obs', ns):
-        time_period = obs.find('generic:ObsDimension', ns).attrib['value']  # "2020-01"
+        time_period = obs.find('generic:ObsDimension', ns).attrib['value']
         value = float(obs.find('generic:ObsValue', ns).attrib['value'])
         data.append((time_period, value))
     df = pd.DataFrame(data, columns=["Month", "Unemployment"])
@@ -45,7 +45,7 @@ def main():
     # Anys >= 2000
     df_yearly = df_yearly[df_yearly["Year"].dt.year >= 2000]
 
-    # Creo connected scatter plot ---
+    # Creo connected scatter plot
     fig = go.Figure()
     for country, g in df_yearly.groupby("Country"):
         fig.add_trace(go.Scatter(
